@@ -1,0 +1,14 @@
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.2rem 2.5rem;
+}
+.nav-mark { font-family: 'Bebas Neue'; font-size: 1rem; letter-spacing: 0.15em; }
+.nav-right { display: flex; gap: 2.5rem; list-style: none; }
+.nav-right a { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+.nav-right a:hover { color: var(--ink); }
+
+@media (max-width: 768px) {
+  .nav-right { display: none; }
+}

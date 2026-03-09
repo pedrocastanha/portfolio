@@ -1,0 +1,26 @@
+/* CONTACT */
+.contact-lay { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.contact-big { font-family: 'Bebas Neue'; font-size: clamp(3.5rem, 8vw, 7rem); line-height: 0.9; }
+.contact-big em { font-family: 'DM Serif Display'; font-style: italic; color: var(--mid); }
+.c-links { display: flex; flex-direction: column; gap: 0.85rem; }
+.c-link {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.2rem 1.4rem; border: 1px solid rgba(14,13,11,0.15);
+  text-decoration: none; color: var(--ink);
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.c-link:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.c-link:hover .cl-type { color: rgba(242,237,230,0.4); }
+.c-link:hover .cl-arrow { color: var(--lime); }
+.cl-type { font-size: 0.56rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid); display: block; margin-bottom: 0.2rem; }
+.cl-val { font-size: 0.82rem; }
+.cl-arrow { font-size: 1rem; flex-shrink: 0; }
+
+/* FOOTER */
+footer { padding: 1.8rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+footer span { font-size: 0.62rem; letter-spacing: 0.1em; color: var(--mid); }
+.f-mark { font-family: 'Bebas Neue'; font-size: 0.95rem; letter-spacing: 0.15em; }
+
+@media (max-width: 768px) {
+  .contact-lay { grid-template-columns: 1fr; gap: 2.5rem; }
+}

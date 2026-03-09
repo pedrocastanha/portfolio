@@ -1,0 +1,5 @@
+/* MARQUEE */
+.marquee-wrap { background: var(--ink); padding: 0.9rem 0; overflow: hidden; border-bottom: 1px solid var(--ink); }
+.marquee-track { display: flex; width: max-content; animation: marquee 20s linear infinite; }
+.marquee-item { font-family: 'Bebas Neue'; font-size: 1.05rem; letter-spacing: 0.18em; color: var(--lime); padding: 0 1.5rem; white-space: nowrap; }
+.marquee-sep { color: #3a3a2a; padding: 0 0.3rem; font-family: 'Bebas Neue'; font-size: 1.05rem; }

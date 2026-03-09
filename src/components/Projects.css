@@ -1,0 +1,51 @@
+/* PROJECTS */
+.proj-list { display: flex; flex-direction: column; }
+
+.proj-item {
+  display: grid;
+  grid-template-columns: 70px 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  padding: 2.5rem 0;
+  border-top: 1px solid rgba(14,13,11,0.1);
+  transition: background 0.18s;
+}
+.proj-item:hover { background: var(--paper); margin: 0 -2.5rem; padding-left: 2.5rem; padding-right: 2.5rem; }
+
+.proj-item.feat {
+  background: var(--ink);
+  color: var(--cream);
+  margin: 0 -2.5rem;
+  padding-left: 2.5rem; padding-right: 2.5rem;
+}
+.proj-item.feat .proj-num { color: var(--lime); }
+.proj-item.feat .proj-name { color: var(--cream); }
+.proj-item.feat .proj-desc,
+.proj-item.feat .proj-impact { color: rgba(242,237,230,0.55); }
+.proj-item.feat .proj-impact { color: var(--lime); }
+.proj-item.feat .proj-tag { border-color: rgba(255,255,255,0.12); color: rgba(242,237,230,0.45); }
+.proj-item.feat .proj-link { color: var(--lime); border-color: rgba(200,255,0,0.5); }
+.proj-item.feat .proj-link:hover { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+.proj-item.feat:hover { background: var(--ink); }
+
+.proj-num { font-family: 'Bebas Neue'; font-size: 1.15rem; color: var(--mid); padding-top: 0.15rem; }
+.proj-body { display: flex; flex-direction: column; gap: 0.7rem; }
+.proj-name { font-family: 'DM Serif Display'; font-size: clamp(1.35rem, 2.4vw, 1.9rem); line-height: 1.1; }
+.proj-impact { font-size: 0.68rem; letter-spacing: 0.05em; color: var(--red); font-weight: 500; }
+.proj-desc { font-size: 0.76rem; line-height: 1.78; color: var(--mid); max-width: 550px; }
+.proj-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.2rem; }
+.proj-tag { font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid rgba(14,13,11,0.18); padding: 0.18rem 0.5rem; color: var(--mid); }
+.proj-link {
+  font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink); border: 1px solid rgba(14,13,11,0.3);
+  padding: 0.5rem 0.85rem; text-decoration: none; white-space: nowrap;
+  height: fit-content; margin-top: 0.15rem;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.proj-link:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.proj-link.muted { opacity: 0.25; pointer-events: none; }
+
+@media (max-width: 768px) {
+  .proj-item { grid-template-columns: 45px 1fr; }
+  .proj-link { display: none; }
+}
