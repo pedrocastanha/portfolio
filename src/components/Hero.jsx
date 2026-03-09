@@ -5,12 +5,11 @@ export default function Hero() {
     <section className="hero">
       <div className="hero-top">
         <div className="hero-name">
-          Pedro<br/>
-          <span className="stroke">Castro</span><br/>
-          nheira
+          Pedro<br />
+          <span className="stroke">Castanheira</span><br />
         </div>
         <div className="hero-right">
-          <p className="hero-role">AI Engineer &amp;<br/><em>builder of autonomous systems</em></p>
+          <p className="hero-role">AI Engineer &amp;<br /><em>builder of autonomous systems</em></p>
           <p className="hero-desc">Construo sistemas de IA que funcionam em produção — agentes autônomos, pipelines RAG, automação e arquiteturas multi-agente. Maringá, PR.</p>
           <a href="#contato" className="hero-cta">Vamos conversar →</a>
         </div>
