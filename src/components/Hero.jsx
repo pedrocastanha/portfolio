@@ -16,9 +16,9 @@ export default function Hero() {
       </div>
       <div className="hero-bottom">
         <div className="hero-stats">
-          <div className="stat"><span className="stat-n">5k+</span><span className="stat-l">Usuários em produção</span></div>
-          <div className="stat"><span className="stat-n">6</span><span className="stat-l">Agentes especializados</span></div>
-          <div className="stat"><span className="stat-n">62%</span><span className="stat-l">Redução de custo OCR</span></div>
+          <div className="stat"><span className="stat-n">10k+</span><span className="stat-l">Usuários em produção</span></div>
+          <div className="stat"><span className="stat-n">Diversos</span><span className="stat-l">Agentes especializados</span></div>
+          <div className="stat"><span className="stat-n">85%</span><span className="stat-l">Redução de custo OCR</span></div>
         </div>
         <span className="hero-scroll">scroll ↓</span>
       </div>
