@@ -4,22 +4,22 @@ export default function Stack() {
   const aiTools = [
     {
       name: 'LangChain / LangGraph',
-      description: 'Orquestração de agentes, grafos de decisão e fluxos com estado.'
+      description: 'Orquestração de agentes, grafos de decisão usando arestas condicionais e fluxos com estado.'
     },
     {
       name: 'OpenAI API',
-      description: 'Integração com modelos para raciocínio, geração e tool calling.'
+      description: 'Integração com modelos para raciocínio, geração de embeddings e tool calling.'
     },
     {
-      name: 'Pinecone (RAG)',
-      description: 'Busca vetorial para memória externa e recuperação de contexto.'
+      name: 'Pinecone - Qdrant - ChromaDB (RAG)',
+      description: 'Vector Store para memória externa e recuperação de contexto otimizado. Uso de re-ranking e filtros semânticos para precisão.'
     },
     {
       name: 'N8N Automation',
-      description: 'Automação operacional conectando APIs, eventos e jobs internos.'
+      description: 'Automação operacional conectando APIs, eventos e jobs internos de forma rápida e consistente'
     },
     {
-      name: 'Evolution API (WhatsApp)',
+      name: 'Evolution API - UaZapi - Z-Api - Meta (WhatsApp)',
       description: 'Camada de integração para agentes conversacionais no WhatsApp.'
     },
     {
@@ -31,11 +31,11 @@ export default function Stack() {
   const backendTools = [
     {
       name: 'Python',
-      description: 'Base dos agentes, pipelines e integrações de backend.'
+      description: 'Base dos agentes, pipelines, web-scraping, automação e criação de backends.'
     },
     {
       name: 'NestJS / TypeORM',
-      description: 'APIs estruturadas, regras de negócio e persistência relacional.'
+      description: 'APIs estruturadas, regras de negócio complexas e persistência relacional.'
     },
     {
       name: 'PostgreSQL / MongoDB / Redis',
