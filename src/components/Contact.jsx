@@ -18,10 +18,6 @@ export default function Contact() {
               <div><span className="cl-type">GitHub</span><span className="cl-val">@pedrocastanha</span></div>
               <span className="cl-arrow">↗</span>
             </a>
-            <a href="mailto:seuemail@email.com" className="c-link">
-              <div><span className="cl-type">Email</span><span className="cl-val">seuemail@email.com</span></div>
-              <span className="cl-arrow">↗</span>
-            </a>
           </div>
         </div>
       </section>
