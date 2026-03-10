@@ -11,6 +11,10 @@
 
 html { scroll-behavior: smooth; }
 
+#root {
+  isolation: isolate;
+}
+
 body {
   background: var(--cream);
   color: var(--ink);
@@ -27,7 +31,6 @@ body::before {
   z-index: 1000;
 }
 
-/* Utilities / Shared */
 .section { padding: 5.5rem 2.5rem; border-bottom: 1px solid var(--ink); }
 .s-label { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.3rem; }
 .s-title { font-family: 'Bebas Neue'; font-size: clamp(3rem, 7vw, 6rem); line-height: 0.9; margin-bottom: 4rem; }
@@ -42,12 +45,21 @@ body::before {
   50% { opacity:1; } 
 }
 
+@keyframes ctaFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
 @keyframes marquee { 
   from { transform:translateX(0); } 
   to { transform:translateX(-50%); } 
 }
 
-/* Global Media Queries (Rest handles in modules or global file) */
+@keyframes marqueeGlow {
+  0%, 100% { opacity: 0.78; }
+  50% { opacity: 1; }
+}
+
 @media (max-width: 768px) {
   .hero-top { grid-template-columns: 1fr; }
   .hero-right { padding-bottom: 0; }

@@ -1,7 +1,6 @@
-/* HERO */
 .hero {
   min-height: 100vh;
-  padding: 7rem 2.5rem 3rem;
+  padding: 5.2rem 2.5rem 3rem;
   display: grid;
   grid-template-rows: 1fr auto;
   border-bottom: 1px solid var(--ink);
@@ -33,12 +32,18 @@
 .hero-desc { font-size: 0.76rem; line-height: 1.85; color: var(--mid); max-width: 360px; }
 .hero-cta {
   display: inline-flex; align-items: center; gap: 0.75rem;
-  background: var(--ink); color: var(--lime);
+  background: #d8d0c5; color: var(--ink);
   font-family: 'DM Mono'; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
   padding: 0.95rem 1.8rem; text-decoration: none; width: fit-content;
-  transition: background 0.18s, color 0.18s;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  animation: ctaFloat 3.2s ease-in-out infinite;
 }
-.hero-cta:hover { background: var(--lime); color: var(--ink); }
+.hero-cta:hover {
+  background: #cec5b8;
+  color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(14, 13, 11, 0.08);
+}
 
 .hero-bottom {
   display: flex; justify-content: space-between; align-items: flex-end;

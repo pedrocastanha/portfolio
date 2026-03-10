@@ -1,4 +1,3 @@
-/* CONTACT */
 .contact-lay { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
 .contact-big { font-family: 'Bebas Neue'; font-size: clamp(3.5rem, 8vw, 7rem); line-height: 0.9; }
 .contact-big em { font-family: 'DM Serif Display'; font-style: italic; color: var(--mid); }
@@ -16,7 +15,6 @@
 .cl-val { font-size: 0.82rem; }
 .cl-arrow { font-size: 1rem; flex-shrink: 0; }
 
-/* FOOTER */
 footer { padding: 1.8rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
 footer span { font-size: 0.62rem; letter-spacing: 0.1em; color: var(--mid); }
 .f-mark { font-family: 'Bebas Neue'; font-size: 0.95rem; letter-spacing: 0.15em; }

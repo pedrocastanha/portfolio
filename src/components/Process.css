@@ -1,4 +1,3 @@
-/* PROCESS */
 .proc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; }
 .proc-item { padding: 2.5rem; border-right: 1px solid rgba(14,13,11,0.1); }
 .proc-item:last-child { border-right: none; }

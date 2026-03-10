@@ -1,11 +1,74 @@
-/* STACK */
 .stack-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
 .stack-col h3 { font-family: 'DM Serif Display'; font-style: italic; font-size: 1rem; color: var(--mid); margin-bottom: 1.5rem; }
-.stack-row { display: flex; justify-content: space-between; align-items: center; padding: 0.7rem 0; border-bottom: 1px solid rgba(14,13,11,0.08); font-size: 0.73rem; }
+.stack-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  min-height: 4.4rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid rgba(14,13,11,0.08);
+  font-size: 0.73rem;
+}
 .stack-row:first-of-type { border-top: 1px solid rgba(14,13,11,0.08); }
-.dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(14,13,11,0.2); }
-.dot.on { background: var(--lime); box-shadow: 0 0 5px var(--lime); border: 1px solid rgba(14,13,11,0.2); }
+.stack-copy {
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: 2.6rem;
+}
+.stack-name,
+.stack-description {
+  grid-area: 1 / 1;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+.stack-name {
+  opacity: 1;
+  transform: translateY(0);
+}
+.stack-description {
+  opacity: 0;
+  transform: translateY(6px);
+  color: var(--mid);
+  line-height: 1.7;
+  max-width: 28rem;
+}
+.stack-row:hover .stack-name {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+.stack-row:hover .stack-description {
+  opacity: 1;
+  transform: translateY(0);
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 7px rgba(200, 255, 0, 0.8);
+  border: 1px solid rgba(14,13,11,0.12);
+  flex-shrink: 0;
+}
 
 @media (max-width: 768px) {
   .stack-cols { grid-template-columns: 1fr; gap: 2.5rem; }
+  .stack-description {
+    position: static;
+    opacity: 1;
+    transform: none;
+    margin-top: 0.25rem;
+    font-size: 0.67rem;
+  }
+  .stack-row {
+    align-items: flex-start;
+  }
+  .stack-copy {
+    display: block;
+  }
+  .stack-row:hover .stack-name,
+  .stack-row:hover .stack-description {
+    opacity: 1;
+    transform: none;
+  }
 }
