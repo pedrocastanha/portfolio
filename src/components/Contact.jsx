@@ -10,7 +10,7 @@ export default function Contact() {
             <div className="contact-big">Vamos<br/><em>construir</em><br/>algo.</div>
           </div>
           <div className="c-links">
-            <a href="https://www.linkedin.com/in/pedro-castanheira-1946b8214/" target="_blank" rel="noreferrer" className="c-link">
+            <a href="https://www.linkedin.com/in/pedro-castanheira-costa-1946b8214/" target="_blank" rel="noreferrer" className="c-link">
               <div><span className="cl-type">LinkedIn</span><span className="cl-val">Pedro Castanheira Costa</span></div>
               <span className="cl-arrow">↗</span>
             </a>
