@@ -1,16 +1,148 @@
-# React + Vite
+# Portfolio — monorepo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfólio pessoal (React + Vite) + API de blog (NestJS + TypeORM + Postgres).
 
-Currently, two official plugins are available:
+```
+portfolio/
+├── frontend/          # Site (Vercel)
+├── backend/           # API do blog (Railway / Render)
+├── docker-compose.yml # Postgres local
+└── docs/              # Design notes
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Stack
 
-## React Compiler
+| Camada | Tech | Deploy |
+|--------|------|--------|
+| Frontend | React 19 + Vite | Vercel |
+| Backend | NestJS + TypeORM | Railway ou Render |
+| DB (local) | Postgres 16 via Docker | — |
+| DB (prod) | Supabase Postgres | Supabase |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Setup local
 
-## Expanding the ESLint configuration
+### 1. Postgres
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+docker compose up -d
+```
+
+### 2. Backend
+
+```bash
+cd backend
+cp .env.example .env   # já existe .env de exemplo no repo se criado
+npm install
+npm run start:dev
+```
+
+API em `http://localhost:3000`.
+
+### 3. Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Site em `http://localhost:5173`. Em dev, requests para `/api/*` são proxy para o Nest.
+
+## API do blog
+
+### Leitura (pública)
+
+```http
+GET /posts
+GET /posts/:slug
+```
+
+Só retorna posts com `publishedAt` preenchido.
+
+### Escrita (API key)
+
+Header: `x-api-key: <API_KEY do .env>`
+
+```http
+POST   /posts
+PUT    /posts/:slug
+DELETE /posts/:slug
+```
+
+#### Exemplo — criar post
+
+```bash
+curl -X POST http://localhost:3000/posts \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: dev-local-api-key-change-me" \
+  -d '{
+    "title": "Meu primeiro post",
+    "slug": "meu-primeiro-post",
+    "excerpt": "Notas sobre agentes e produção.",
+    "content": "## Olá\n\nConteúdo em **Markdown**.",
+    "tags": ["IA", "engenharia"],
+    "publishedAt": "2026-07-27T12:00:00.000Z"
+  }'
+```
+
+Omita `publishedAt` (ou envie `null`) para deixar como rascunho (não aparece no site).
+
+### Body
+
+| Campo | Tipo | Obrigatório |
+|-------|------|-------------|
+| title | string | sim |
+| slug | kebab-case | sim (único) |
+| excerpt | string | sim |
+| content | Markdown | sim |
+| tags | string[] | não |
+| publishedAt | ISO date \| null | não |
+
+## Projetos do portfólio
+
+Conteúdo estático em `frontend/src/data/projects.js`. Edite/adicione cases ali quando quiser — não passam pela API nesta versão.
+
+## Deploy
+
+### Supabase
+
+1. Crie um projeto no Supabase.
+2. **Project Settings → Database → Connection string (URI)**.
+3. No backend (Railway/Render), defina:
+   - `DATABASE_URL=<uri do Supabase>`
+   - `DATABASE_SSL=true`
+   - `API_KEY=<segredo forte>`
+   - `CORS_ORIGIN=https://seu-dominio.vercel.app`
+   - `TYPEORM_SYNC=true` na primeira subida (depois ideal migrar e desligar)
+
+### Backend (Railway / Render)
+
+- Root directory: `backend`
+- Build: `npm install && npm run build`
+- Start: `npm run start:prod`
+- Variáveis: as do `.env.example`
+
+### Frontend (Vercel)
+
+- Root directory: `frontend`
+- Build: `npm run build`
+- Output: `dist`
+- Env: `VITE_API_URL=https://sua-api.up.railway.app` (sem barra no final)
+
+> SPAs: configure rewrite de rotas (`/*` → `/index.html`) na Vercel para `/blog/:slug` e `/projetos/:slug` funcionarem no refresh.
+
+## Scripts úteis
+
+```bash
+# raiz
+docker compose up -d
+docker compose down
+
+# backend
+cd backend && npm run start:dev
+cd backend && npm run build
+
+# frontend
+cd frontend && npm run dev
+cd frontend && npm run build
+```

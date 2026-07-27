@@ -24,3 +24,22 @@ dist-ssr
 *.sw?
 
 .cast
+
+# Superpowers brainstorm
+.superpowers/
+
+# Env
+.env
+.env.*
+!.env.example
+backend/.env
+frontend/.env
+
+# Backend
+backend/dist
+backend/coverage
+
+# Frontend
+frontend/dist
+frontend/node_modules
+backend/node_modules
