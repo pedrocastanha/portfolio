@@ -67,6 +67,8 @@ body::before {
   .nav-right { display: none; }
   .proj-item { grid-template-columns: 45px 1fr; }
   .proj-link { display: none; }
+  .blog-item { grid-template-columns: 1fr; }
+  .blog-link { display: none; }
   .stack-cols, .proc-grid, .contact-lay { grid-template-columns: 1fr; gap: 2.5rem; }
   .proc-item { border-right: none; border-bottom: 1px solid rgba(14,13,11,0.1); padding: 2rem 0; }
 }
