@@ -1,81 +1,125 @@
-import { getProjectBySlug, projects } from '../data/projects';
+import { useEffect } from 'react';
+import { getProjectBySlug, getRelatedProjects } from '../data/projects';
+import ArchitectureFlow from './ArchitectureFlow';
 import './ProjectPage.css';
 
-function ProjectPage({ slug }) {
+export default function ProjectPage({ slug }) {
   const project = getProjectBySlug(slug);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = project ? `${project.name} — Pedro Castanheira` : 'Projeto não encontrado — Pedro Castanheira';
+    const description = document.querySelector('meta[name="description"]');
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (project) {
+      description?.setAttribute('content', project.impact);
+      canonical?.setAttribute('href', `https://pedro-castanheira.com/projetos/${project.slug}`);
+    }
+  }, [project]);
 
   if (!project) {
     return (
-      <main className="project-page">
-        <section className="project-hero project-missing">
-          <p className="s-label">// projeto não encontrado</p>
-          <h1 className="project-title">Esse projeto não existe nesta rota.</h1>
-          <a href="/" className="project-back">Voltar para a home</a>
+      <main className="project-page" id="main-content">
+        <section className="project-not-found">
+          <span>404 / PROJETO NÃO ENCONTRADO</span>
+          <h1>Esse sistema não está no grafo.</h1>
+          <a href="/" className="button button--primary">Voltar ao portfólio</a>
         </section>
       </main>
     );
   }
 
-  const relatedProjects = projects.filter((item) => item.slug !== slug).slice(0, 3);
+  const related = getRelatedProjects(slug);
 
   return (
-    <main className="project-page">
-      <section className={`project-hero accent-${project.accent}`}>
-        <div className="project-hero-top">
-          <p className="s-label">// projeto selecionado</p>
-          <span className="project-id">{project.id}</span>
-          <h1 className="project-title">{project.name}</h1>
-          <p className="project-impact">{project.impact}</p>
-          <p className="project-summary">{project.summary}</p>
-          <div className="project-actions">
-            {project.link ? (
-              <a href={project.link} target="_blank" rel="noreferrer" className="project-github">
-                Abrir no GitHub ↗
-              </a>
-            ) : (
-              <span className="project-github project-private">Repositorio privado 🔒</span>
-            )}
+    <main className={`project-page project-page--${project.tone}`} id="main-content">
+      <header className="case-hero">
+        <div className="case-topline">
+          <a href="/#projetos">← Todos os projetos</a>
+          <span>{project.type} / {project.status}</span>
+        </div>
+        <div className="case-title">
+          <span>{project.id}</span>
+          <h1>{project.name}</h1>
+        </div>
+        <div className="case-intro">
+          <p>{project.impact}</p>
+          <div>
+            <p>{project.summary}</p>
+            <div className="case-actions">
+              {project.link ? <a href={project.link} target="_blank" rel="noreferrer" className="button button--primary">Abrir GitHub ↗</a> : <span className="case-private">Case profissional · código privado</span>}
+              {project.secondaryLink && <a href={project.secondaryLink} target="_blank" rel="noreferrer" className="button button--text">{project.secondaryLabel} ↗</a>}
+            </div>
+          </div>
+        </div>
+        <div className="case-proof">
+          {project.proof.map((item) => (
+            <div key={item.label}><strong>{item.value}</strong><span>{item.label}</span></div>
+          ))}
+        </div>
+      </header>
+
+      <section className="case-architecture section">
+        <div className="case-section-label"><span>01</span><p>Arquitetura do sistema</p></div>
+        <div className="case-section-content">
+          <h2>Do evento inicial<br />ao resultado.</h2>
+          <ArchitectureFlow steps={project.architecture} />
+        </div>
+      </section>
+
+      <section className="case-story section">
+        <div className="case-section-label"><span>02</span><p>Problema e solução</p></div>
+        <div className="case-story-grid">
+          <article>
+            <span>O PROBLEMA</span>
+            <h2>O que precisava mudar.</h2>
+            <p>{project.challenge}</p>
+          </article>
+          <article>
+            <span>A RESPOSTA</span>
+            <h2>Como eu estruturei.</h2>
+            <p>{project.solution}</p>
+          </article>
+        </div>
+      </section>
+
+      <section className="case-decisions section">
+        <div className="case-section-label"><span>03</span><p>Decisões de engenharia</p></div>
+        <div className="case-section-content">
+          <h2>Trade-offs que<br />moldaram o produto.</h2>
+          <div className="decision-list">
+            {project.decisions.map((decision, index) => (
+              <article key={decision.title}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <h3>{decision.title}</h3>
+                <p>{decision.text}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="section project-section">
-        <p className="s-label">// visão geral</p>
-        <div className="project-content">
-          {project.details.map((detail) => (
-            <p key={detail} className="project-copy">{detail}</p>
-          ))}
+      <section className="case-scope section">
+        <div>
+          <span className="case-meta-label">MINHA ATUAÇÃO</span>
+          <div className="case-pills">{project.role.map((item) => <span key={item}>{item}</span>)}</div>
         </div>
-
-        <p className="s-label project-stack-label">// destaques</p>
-        <div className="project-highlights">
-          {project.highlights.map((highlight) => (
-            <div key={highlight} className="project-highlight">{highlight}</div>
-          ))}
+        <div>
+          <span className="case-meta-label">STACK</span>
+          <div className="case-pills">{project.tags.map((item) => <span key={item}>{item}</span>)}</div>
         </div>
+      </section>
 
-        <p className="s-label project-stack-label">// stack usada</p>
-        <div className="project-tags">
-          {project.tags.map((tag) => (
-            <span key={tag} className="project-tag">{tag}</span>
+      <section className="case-next">
+        <span>CONTINUE EXPLORANDO</span>
+        <div>
+          {related.map((item) => (
+            <a href={`/projetos/${item.slug}`} key={item.slug}>
+              <small>{item.id}</small><strong>{item.name}</strong><b>↗</b>
+            </a>
           ))}
-        </div>
-
-        <div className="project-footer-nav">
-          <div className="project-next">
-            <span className="project-next-label">outros projetos</span>
-            <div className="project-next-links">
-              {relatedProjects.map((item) => (
-                <a key={item.slug} href={`/projetos/${item.slug}`} className="project-next-link">
-                  {item.name}
-                </a>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
     </main>
   );
 }
-
-export default ProjectPage;

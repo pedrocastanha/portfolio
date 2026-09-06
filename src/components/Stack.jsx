@@ -1,93 +1,67 @@
 import './Stack.css';
 
+const capabilities = [
+  {
+    index: '01',
+    title: 'Sistemas agênticos',
+    text: 'Grafos com estado, roteamento, subagentes, tools, memória e human-in-the-loop.',
+    tools: ['LangGraph', 'LangChain', 'OpenAI', 'Anthropic', 'MCP']
+  },
+  {
+    index: '02',
+    title: 'Contexto & dados',
+    text: 'RAG multi-tenant, chunking, filtros, reranking, bancos vetoriais e code graphs.',
+    tools: ['Qdrant', 'PostgreSQL', 'MongoDB', 'Redis', 'Neo4j']
+  },
+  {
+    index: '03',
+    title: 'Backend de produção',
+    text: 'APIs, streaming, filas e serviços resilientes para fluxos síncronos e assíncronos.',
+    tools: ['Python', 'FastAPI', 'NestJS', 'WebSocket', 'SSE', 'BullMQ']
+  },
+  {
+    index: '04',
+    title: 'LLMOps & qualidade',
+    text: 'Tracing, evals, custo, testes, guardrails e diagnóstico de falhas por execução.',
+    tools: ['TraceCast', 'Langfuse', 'LangSmith', 'Pytest', 'Jest']
+  },
+  {
+    index: '05',
+    title: 'Cloud & entrega',
+    text: 'Ambientes reproduzíveis, pipelines de entrega e operação observável em cloud.',
+    tools: ['Docker', 'GCP', 'GitHub Actions', 'CI/CD', 'Git']
+  },
+  {
+    index: '06',
+    title: 'Visão computacional',
+    text: 'Classificação, fine-tuning, pré-processamento e extração híbrida de documentos.',
+    tools: ['PyTorch', 'OpenCV', 'OCR', 'scikit-learn', 'Pillow']
+  }
+];
+
 export default function Stack() {
-  const aiTools = [
-    {
-      name: 'LangChain / LangGraph',
-      description: 'Orquestração de agentes, grafos de decisão usando arestas condicionais e fluxos com estado.'
-    },
-    {
-      name: 'OpenAI API',
-      description: 'Integração com modelos para raciocínio, geração de embeddings e tool calling.'
-    },
-    {
-      name: 'Pinecone - Qdrant - ChromaDB (RAG)',
-      description: 'Vector Store para memória externa e recuperação de contexto otimizado. Uso de re-ranking e filtros semânticos para precisão.'
-    },
-    {
-      name: 'N8N Automation',
-      description: 'Automação operacional conectando APIs, eventos e jobs internos de forma rápida e consistente'
-    },
-    {
-      name: 'Evolution API - UaZapi - Z-Api - Meta (WhatsApp)',
-      description: 'Camada de integração para agentes conversacionais no WhatsApp.'
-    },
-    {
-      name: 'Google Document AI',
-      description: 'Extração OCR estruturada para documentos complexos e validação.'
-    }
-  ];
-
-  const backendTools = [
-    {
-      name: 'Python',
-      description: 'Base dos agentes, pipelines, web-scraping, automação e criação de backends.'
-    },
-    {
-      name: 'NestJS / TypeORM',
-      description: 'APIs estruturadas, regras de negócio complexas e persistência relacional.'
-    },
-    {
-      name: 'PostgreSQL / MongoDB / Redis',
-      description: 'Dados transacionais, memória persistente e cache operacional.'
-    },
-    {
-      name: 'Docker / GitHub Actions',
-      description: 'Empacotamento, CI e padronização do ambiente de entrega.'
-    },
-    {
-      name: 'Google Cloud Run',
-      description: 'Deploy serverless com escala simples para serviços HTTP.'
-    },
-    {
-      name: 'ngrok',
-      description: 'Exposição segura de serviços locais para acesso remoto controlado.'
-    }
-  ];
-
   return (
-    <section className="section" id="stack">
-      <p className="s-label">// ferramentas</p>
-      <h2 className="s-title">Stack</h2>
-      <div className="stack-cols">
-        <div className="stack-col">
-          <h3>Inteligência Artificial</h3>
-          <div>
-            {aiTools.map(tool => (
-              <div key={tool.name} className="stack-row">
-                <div className="stack-copy">
-                  <span className="stack-name">{tool.name}</span>
-                  <span className="stack-description">{tool.description}</span>
-                </div>
-                <span className="dot on"></span>
-              </div>
-            ))}
-          </div>
+    <section className="section stack-section" id="stack">
+      <div className="section-heading" data-reveal>
+        <p className="section-index">03 / Conhecimento</p>
+        <div>
+          <h2>Do modelo até<br />a produção.</h2>
+          <p>Minha stack não é uma coleção de logos. É o conjunto de decisões que uso para fazer sistemas de IA funcionarem sob pressão.</p>
         </div>
-        <div className="stack-col">
-          <h3>Backend &amp; Infra</h3>
-          <div>
-            {backendTools.map(tool => (
-              <div key={tool.name} className="stack-row">
-                <div className="stack-copy">
-                  <span className="stack-name">{tool.name}</span>
-                  <span className="stack-description">{tool.description}</span>
-                </div>
-                <span className="dot on"></span>
-              </div>
-            ))}
-          </div>
-        </div>
+      </div>
+      <div className="capability-list">
+        {capabilities.map((capability) => (
+          <article className="capability" key={capability.index} data-reveal>
+            <span className="capability-index">{capability.index}</span>
+            <div className="capability-copy">
+              <h3>{capability.title}</h3>
+              <p>{capability.text}</p>
+            </div>
+            <div className="capability-tools">
+              {capability.tools.map((tool) => <span key={tool}>{tool}</span>)}
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );

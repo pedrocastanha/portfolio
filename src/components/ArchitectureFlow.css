@@ -1,0 +1,11 @@
+.architecture-flow { min-width: 0; max-width: 100%; display: grid; grid-template-columns: repeat(6, minmax(7rem, 1fr)); width: 100%; overflow-x: auto; padding-bottom: .75rem; }
+.architecture-step { position: relative; min-width: 7rem; padding: 1rem 1rem 1rem 0; border-top: 1px solid currentColor; }
+.architecture-step::before { content: ''; position: absolute; top: -.22rem; left: 0; width: .4rem; height: .4rem; border-radius: 50%; background: currentColor; }
+.architecture-node { display: flex; flex-direction: column; gap: .3rem; padding-right: .5rem; }
+.architecture-index { color: var(--accent); font-size: .58rem; font-weight: 700; }
+.architecture-node strong { margin-top: .45rem; font-size: .78rem; line-height: 1.25; }
+.architecture-node small { color: var(--muted); font-size: .68rem; line-height: 1.35; }
+.architecture-link { position: absolute; top: -.32rem; right: .25rem; width: .55rem; height: .55rem; border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: rotate(45deg); }
+.architecture-link span { display: none; }
+.architecture-flow--compact { grid-template-columns: repeat(4, minmax(6rem, 1fr)); }
+@media (max-width: 650px) { .architecture-flow { grid-template-columns: repeat(6, 8rem); } .architecture-flow--compact { grid-template-columns: repeat(2, minmax(0, 1fr)); overflow: visible; } .architecture-flow--compact .architecture-step { min-width: 0; } }
