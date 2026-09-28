@@ -17,13 +17,13 @@ const pt = {
   },
 
   hero: {
-    eyebrow: 'Pedro Castanheira Costa · Engenheiro de IA · Tech Lead',
+    eyebrow: 'Pedro Castanheira Costa · Engenheiro de IA · Squad Leader',
     titleBefore: 'Construo agentes de IA que ',
-    titleMark: 'operam em produção',
-    titleAfter: ' — dos dados ao deploy e à avaliação.',
+    titleMark: 'operam em produção.',
+    titleAfter: 'dos dados ao deploy e à avaliação.',
     lede:
-      'Lidero tecnicamente uma squad responsável por cinco produtos de IA em produção numa empresa de educação. Atuo da descoberta do problema com as áreas de negócio até arquitetura, implementação, observabilidade e avaliação — principalmente com Python, LangGraph e FastAPI, e TypeScript com NestJS no backend.',
-    note: 'produtos anônimos, números reais',
+      'Lidero tecnicamente um squad responsável por cinco produtos de IA em produção numa EdTech. Atuo da descoberta do problema com as áreas de negócio até arquitetura, implementação, observabilidade e avaliação, principalmente com Python, LangGraph e FastAPI, e TypeScript com NestJS no backend.',
+    note: 'números reais',
     metrics: [
       { value: '70–120', label: 'vendas por dia feitas por um agente conversacional, 24/7' },
       { value: '~140 mil', label: 'submissões corrigidas por mês num pipeline assíncrono com LangChain' },
@@ -77,7 +77,7 @@ const pt = {
     kicker: 'Cases',
     prodTitle: 'Em produção',
     prodLede:
-      'Três dos cinco produtos que lidero tecnicamente. Os nomes ficam de fora; o problema, as decisões e os números, não.',
+      'O problema, decisões e números de três dos cinco produtos que lidero tecnicamente.',
     prodBadge: 'Produção',
     personalTitle: 'Projetos pessoais',
     personalLede: 'Onde testo ideias com código aberto: revisão de código com grafos, avaliação de RAG e ferramentas para agentes de código.',
@@ -89,7 +89,7 @@ const pt = {
     returnLabel: 'evidência volta para a descoberta',
     kicker: 'Método',
     title: 'Como um produto de IA sai do papel comigo.',
-    lede: 'O ciclo que aplico na squad. A avaliação e a observabilidade voltam para a descoberta, e o produto melhora com evidência — não com impressão.',
+    lede: 'O ciclo que aplico na squad. A avaliação e a observabilidade voltam para a descoberta, e o produto melhora com evidência, não com impressão.',
     steps: [
       { id: 'discovery', label: 'descoberta', text: 'Diagnóstico com as áreas de negócio: qual decisão ou tarefa muda, e como vamos saber se funcionou.' },
       { id: 'data', label: 'curadoria', text: 'Entender documentos e planilhas, relacionar entidades e metadados, decidir qual é a fonte de verdade.' },
@@ -105,12 +105,12 @@ const pt = {
     title: 'De onde vem essa experiência.',
     jobs: [
       {
-        role: 'Engenheiro de Software — IA e GenAI · Tech Lead da squad',
+        role: 'Engenheiro de Software — IA e GenAI · Tech Lead do squad',
         org: 'Inova Soluções Educacionais',
         period: 'ago 2025 — atual',
         current: true,
         bullets: [
-          'Liderança técnica da squad e de cinco produtos de IA em produção: diagnóstico com as áreas de negócio, arquitetura, deploy e métricas.',
+          'Liderança técnica do squad e de cinco produtos de IA em produção: diagnóstico com as áreas de negócio, arquitetura, deploy e métricas.',
           'Desenvolvimento de agentes em LangGraph, de um pipeline de correção com BullMQ e LangChain, de RAG multi-tenant com Qdrant para tutoria e de classificadores de documentos com ConvNeXt.',
           'Implantação de LLMOps com Langfuse e evaluators; CI/CD com avaliação de retrieval e do grafo completo, além de métricas de custo, erros e alucinação.',
         ],
@@ -148,8 +148,8 @@ const pt = {
 
   contact: {
     kicker: 'Contato',
-    title: 'Vamos conversar sobre agentes, dados e produtos de IA.',
-    text: 'Estou aberto a posições de AI Engineer. O caminho mais rápido é e-mail ou LinkedIn.',
+    title: 'Vamos conversar sobre soluções inteligentes com IA.',
+    text: '',
     email: 'pedrocastanhacosta1945@gmail.com',
     copy: 'Copiar e-mail',
     copied: 'Copiado',
@@ -182,7 +182,7 @@ const pt = {
   },
 
   footer: {
-    note: 'Diagramas desenhados em código com rough.js e Excalifont. Sem imagens geradas.',
+    note: 'Porfólio inspirado no grandioso Excalidraw.',
     source: 'Código do site',
   },
 
@@ -193,7 +193,7 @@ const pt = {
       short: 'Agente de vendas',
       title: 'Agente de vendas e matrículas',
       summary:
-        'Desenvolvimento de agente conversacional em LangGraph com roteador, três subagentes e ferramentas integradas a sistemas internos — atende, tira dúvidas sobre cursos e conduz a matrícula, 24/7.',
+        'Desenvolvimento de agente conversacional em LangGraph com roteador, três subagentes e ferramentas integradas a sistemas internos: atende, tira dúvidas sobre cursos e conduz a matrícula, 24/7.',
       metric: { value: '70–120', label: 'vendas por dia' },
       context: 'Produção · empresa de educação',
       role: 'Tech lead · arquitetura e desenvolvimento',
@@ -233,7 +233,7 @@ const pt = {
         text: 'O agente opera 24/7 e fecha de 70 a 120 vendas por dia.',
       },
       limits: [
-        'A evolução de chunks para a entidade “curso” aparece aqui como decisão de arquitetura — não publico uma métrica isolada de ganho entre as duas versões.',
+        'A evolução de chunks para a entidade “curso” aparece aqui como decisão de arquitetura, não publico uma métrica isolada de ganho entre as duas versões.',
         'Integrações, dados de clientes e prompts ficam de fora por confidencialidade.',
       ],
       flow: {
@@ -638,7 +638,7 @@ const pt = {
       implementation: [
         'Wizard (npx cast-skills) que detecta as ferramentas instaladas e copia as skills: SKILL.md nativo para Claude Code, Copilot, Gemini e Codex; conversão para .mdc no Cursor e para regras no Windsurf.',
         'Três skills: using-project-skills (roteador), creating-project-skills (bootstrapper) e explaining-changes (explicações depois de uma mudança).',
-        'Testes com node --test para instalação e conversão de formatos.',
+        'Testes automatizados do Node cobrem a instalação e a conversão de formatos.',
       ],
       result: {
         metrics: [{ value: '6', label: 'ferramentas suportadas' }],

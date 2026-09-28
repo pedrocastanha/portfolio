@@ -148,7 +148,7 @@ const en = {
   contact: {
     kicker: 'Contact',
     title: "Let's talk about agents, data and AI products.",
-    text: 'I am open to AI Engineer roles. Email or LinkedIn is the fastest way to reach me.',
+    text: 'For conversations about AI engineering, agents or RAG, email or LinkedIn are the best ways to reach me.',
     email: 'pedrocastanhacosta1945@gmail.com',
     copy: 'Copy email',
     copied: 'Copied',
@@ -634,7 +634,7 @@ const en = {
       implementation: [
         'A wizard (npx cast-skills) that detects installed tools and copies the skills: native SKILL.md for Claude Code, Copilot, Gemini and Codex; converted to .mdc for Cursor and to rules for Windsurf.',
         'Three skills: using-project-skills (router), creating-project-skills (bootstrapper) and explaining-changes (explanations after a change).',
-        'Tests with node --test for installation and format conversion.',
+        'Automated tests cover installation and format conversion using Node.',
       ],
       result: {
         metrics: [{ value: '6', label: 'tools supported' }],
