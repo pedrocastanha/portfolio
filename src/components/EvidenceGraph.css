@@ -1,0 +1,121 @@
+.graph__canvas {
+  margin-top: 2.25rem;
+  border: 2px solid var(--ink);
+  border-radius: var(--wobble);
+  background: var(--paper-raised);
+  background-image: radial-gradient(var(--grid) 1px, transparent 1px);
+  background-size: 20px 20px;
+  padding: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+.graph__canvas svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.edge {
+  color: var(--edge);
+  transition: opacity 0.25s ease, color 0.25s ease;
+}
+
+.edge path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+}
+
+.graph__canvas[data-active] .edge {
+  opacity: 0.05;
+}
+
+.graph__canvas[data-active] .edge.is-on {
+  opacity: 1;
+  color: var(--pen);
+}
+
+.graph__canvas[data-active] .edge.is-on path {
+  stroke-width: 3;
+}
+
+.gnode--skill.is-dim {
+  opacity: 0.35;
+}
+
+.gnode--project.is-on .gnode__backing {
+  fill: var(--fill-yellow);
+}
+
+.gnode__backing {
+  fill: var(--paper-raised);
+}
+
+.gnode {
+  transition: opacity 0.25s ease;
+  cursor: pointer;
+}
+
+.graph__canvas[data-active] .gnode--project:not(.is-on) {
+  opacity: 0.25;
+}
+
+.gnode--skill.is-on .gnode__backing {
+  fill: var(--fill-yellow);
+}
+
+.gnode--project:hover .hand-text {
+  text-decoration: underline;
+}
+
+.graph__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.chip {
+  font: inherit;
+  font-size: 0.92rem;
+  color: var(--ink);
+  background: var(--paper-raised);
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  min-height: 40px;
+  cursor: pointer;
+}
+
+.chip:hover,
+.chip[aria-pressed='true'] {
+  background: var(--fill-yellow);
+}
+
+.graph__proof {
+  min-height: 3.2rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.graph__proof p {
+  margin: 0;
+}
+
+.graph__proof-label {
+  font-family: var(--hand);
+  font-size: 1.2rem;
+  color: var(--pen);
+}
+
+.graph__proof-hint {
+  font-family: var(--hand);
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+@media (max-width: 760px) {
+  .graph__canvas {
+    display: none;
+  }
+}

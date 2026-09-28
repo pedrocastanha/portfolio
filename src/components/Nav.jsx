@@ -1,25 +1,33 @@
+import { alternatePath, paths } from '../content';
 import './Nav.css';
 
-export default function Nav({ isProjectPage }) {
-  const prefix = isProjectPage ? '/' : '';
+const SECTIONS = ['work', 'graph', 'method', 'path', 'contact'];
+
+function Nav({ c, route }) {
+  const home = paths[c.lang].home;
+  const prefix = route.page === 'home' ? '' : home;
+
   return (
-    <>
-      <a className="skip-link" href="#main-content">Ir para o conteúdo</a>
-      <nav className="site-nav" aria-label="Navegação principal">
-        <a href="/" className="nav-brand" aria-label="Pedro Castanheira — início">
-          <span className="nav-monogram">PC</span>
-          <span className="nav-name">Pedro Castanheira</span>
+    <header className="nav">
+      <div className="nav__inner">
+        <a className="nav__brand" href={home} aria-label={`Pedro Castanheira — ${c.ui.home}`}>
+          pedro castanheira
         </a>
-        <div className="nav-links">
-          <a href={`${prefix}#projetos`}>Projetos</a>
-          <a href={`${prefix}#experiencia`}>Experiência</a>
-          <a href={`${prefix}#stack`}>Conhecimento</a>
-        </div>
-        <a className="nav-contact" href={`${prefix}#contato`}>
-          Conversar <span>↗</span>
+        <nav className="nav__links" aria-label={c.lang === 'pt' ? 'Principal' : 'Main'}>
+          <ul>
+            {SECTIONS.map((id) => (
+              <li key={id}>
+                <a href={`${prefix}#${id}`}>{c.ui.nav[id]}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <a className="nav__lang" href={alternatePath(route)} hrefLang={c.lang === 'pt' ? 'en' : 'pt-BR'} title={c.ui.langSwitch.title}>
+          {c.ui.langSwitch.label}
         </a>
-      </nav>
-      <div className="scroll-progress" aria-hidden="true" />
-    </>
+      </div>
+    </header>
   );
 }
+
+export default Nav;

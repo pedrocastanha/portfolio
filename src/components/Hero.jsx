@@ -1,49 +1,65 @@
+import { LINKS } from '../content';
+import { heroFlow } from '../content/flows';
+import { Underline } from '../sketch/Sketch';
+import FlowDiagram from './FlowDiagram';
+import HandArrow from './HandArrow';
 import './Hero.css';
 
-const metrics = [
-  { value: '140 mil', label: 'submissões processadas por mês', context: 'RAG multi-tenant' },
-  { value: '40–70', label: 'conversões geradas por dia', context: 'sistema multiagente' },
-  { value: '~60%', label: 'de redução no custo de OCR', context: 'visão computacional' }
-];
-
-export default function Hero() {
+function Hero({ c }) {
+  const h = c.hero;
   return (
-    <section className="hero" id="inicio">
-      <div className="hero-meta" data-reveal>
-        <span>AI Engineer &amp; Tech Lead</span>
-        <span>Maringá, Brasil · 2026</span>
-      </div>
-
-      <div className="hero-grid" data-reveal>
-        <h1>Sistemas de IA que continuam funcionando <em>depois da demo.</em></h1>
-        <div className="hero-aside">
-          <p>
-            Projeto agentes, plataformas de RAG e infraestrutura de LLMs com o rigor
-            de software que produção exige: contexto, custo, avaliação, observabilidade e escala.
-          </p>
-          <div className="hero-actions">
-            <a href="#projetos" className="button button--primary">Ver projetos</a>
-            <a href="https://github.com/pedrocastanha" target="_blank" rel="noreferrer" className="button button--text">GitHub ↗</a>
+    <section className="hero" aria-labelledby="hero-title">
+      <div className="hero__inner">
+        <div className="hero__top">
+          <div className="hero__copy">
+            <p className="eyebrow">{h.eyebrow}</p>
+            <h1 id="hero-title" className="hero__title">
+              {h.titleBefore}
+              <span className="hero__mark">
+                {h.titleMark}
+                <Underline id="hero-underline" width={320} />
+              </span>
+              {h.titleAfter}
+            </h1>
+            <p className="hero__lede">{h.lede}</p>
           </div>
-          <dl className="hero-scope">
-            <div><dt>Foco</dt><dd>AI Engineering · Agentic Systems · LLMOps</dd></div>
-            <div><dt>Atuação</dt><dd>Arquitetura, produto e implementação hands-on</dd></div>
-          </dl>
+          <div className="hero__sketch">
+            <FlowDiagram flow={heroFlow} labels={h.sketch} title={h.sketchLabel} />
+          </div>
         </div>
-      </div>
 
-      <div className="hero-evidence" data-reveal>
-        <p>Evidência, não adjetivos.</p>
-        <div>
-          {metrics.map((metric) => (
-            <article key={metric.value}>
-              <span>{metric.context}</span>
-              <strong>{metric.value}</strong>
-              <small>{metric.label}</small>
-            </article>
-          ))}
+        <div className="hero__metrics-wrap">
+          <p className="hero__note" aria-hidden="true">
+            {h.note}
+            <HandArrow id="hero-note-arrow" />
+          </p>
+          <ul className="hero__metrics">
+            {h.metrics.map((m) => (
+              <li key={m.value} className="metric">
+                <span className="metric__value">{m.value}</span>
+                <span className="metric__label">{m.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="hero__ctas">
+          <a className="btn btn--primary" href="#work">
+            {h.ctas.work}
+          </a>
+          <a className="btn" href={LINKS.github} rel="me noopener" target="_blank">
+            {h.ctas.github}
+          </a>
+          <a className="btn" href={LINKS.linkedin} rel="me noopener" target="_blank">
+            {h.ctas.linkedin}
+          </a>
+          <a className="btn btn--ghost" href="#contact">
+            {h.ctas.contact}
+          </a>
         </div>
       </div>
     </section>
   );
 }
+
+export default Hero;
